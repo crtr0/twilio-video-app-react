@@ -48,7 +48,7 @@ export default function MenuBar() {
   const roomState = useRoomState();
 
   const [name, setName] = useState<string>(user?.displayName || '');
-  const [roomName, setRoomName] = useState<string>('');
+  const [roomName, setRoomName] = useState<string>('CascadiaJS');
 
   useEffect(() => {
     if (URLRoomName) {
@@ -60,9 +60,9 @@ export default function MenuBar() {
     setName(event.target.value);
   };
 
-  const handleRoomNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+  /*const handleRoomNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setRoomName(event.target.value);
-  };
+  };*/
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -97,7 +97,7 @@ export default function MenuBar() {
               label="Room"
               className={classes.textField}
               value={roomName}
-              onChange={handleRoomNameChange}
+              //onChange={handleRoomNameChange}
               margin="dense"
             />
             <Button type="submit" color="primary" variant="contained" disabled={isConnecting || !name || !roomName}>

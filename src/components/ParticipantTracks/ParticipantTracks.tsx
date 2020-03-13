@@ -45,7 +45,8 @@ export default function ParticipantTracks({
           publication={publication}
           participant={participant}
           isLocal={isLocal}
-          disableAudio={disableAudio}
+          //disableAudio={disableAudio}
+          disableAudio={true}
           videoPriority={videoPriority}
         />
       ))}

@@ -7,7 +7,7 @@ import BandwidthWarning from '../BandwidthWarning/BandwidthWarning';
 import MicOff from '@material-ui/icons/MicOff';
 import NetworkQualityLevel from '../NewtorkQualityLevel/NetworkQualityLevel';
 import ParticipantConnectionIndicator from './ParticipantConnectionIndicator/ParticipantConnectionIndicator';
-import PinIcon from './PinIcon/PinIcon';
+//import PinIcon from './PinIcon/PinIcon';
 import ScreenShare from '@material-ui/icons/ScreenShare';
 import VideocamOff from '@material-ui/icons/VideocamOff';
 
@@ -20,6 +20,8 @@ import useTrack from '../../hooks/useTrack/useTrack';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
+      width: '250px',
+      margin: '5px',
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
@@ -70,11 +72,11 @@ const useStyles = makeStyles((theme: Theme) =>
 interface ParticipantInfoProps {
   participant: LocalParticipant | RemoteParticipant;
   children: React.ReactNode;
-  onClick: () => void;
-  isSelected: boolean;
+  //onClick: () => void;
+  //isSelected: boolean;
 }
 
-export default function ParticipantInfo({ participant, onClick, isSelected, children }: ParticipantInfoProps) {
+export default function ParticipantInfo({ participant, children }: ParticipantInfoProps) {
   const publications = usePublications(participant);
 
   const audioPublication = publications.find(p => p.kind === 'audio');
@@ -95,7 +97,6 @@ export default function ParticipantInfo({ participant, onClick, isSelected, chil
       className={clsx(classes.container, {
         [classes.isVideoSwitchedOff]: isVideoSwitchedOff,
       })}
-      onClick={onClick}
       data-cy-participant={participant.identity}
     >
       <div className={clsx(classes.infoContainer, { [classes.hideVideo]: !isVideoEnabled })}>
@@ -110,7 +111,6 @@ export default function ParticipantInfo({ participant, onClick, isSelected, chil
           {!isAudioEnabled && <MicOff data-cy-audio-mute-icon />}
           {!isVideoEnabled && <VideocamOff />}
           {isScreenShareEnabled && <ScreenShare />}
-          {isSelected && <PinIcon />}
         </div>
       </div>
       {isVideoSwitchedOff && <BandwidthWarning />}

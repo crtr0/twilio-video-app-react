@@ -7,7 +7,7 @@ import ToggleAudioButton from './ToggleAudioButton/ToggleAudioButton';
 import ToggleVideoButton from './ToggleVideoButton/ToggleVideoButton';
 import ToggleScreenShareButton from './ToogleScreenShareButton/ToggleScreenShareButton';
 
-import useIsUserActive from './useIsUserActive/useIsUserActive';
+//import useIsUserActive from './useIsUserActive/useIsUserActive';
 import useRoomState from '../../hooks/useRoomState/useRoomState';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,8 +36,8 @@ export default function Controls() {
   const classes = useStyles();
   const roomState = useRoomState();
   const isReconnecting = roomState === 'reconnecting';
-  const isUserActive = useIsUserActive();
-  const showControls = isUserActive || roomState === 'disconnected';
+  //const isUserActive = useIsUserActive();
+  const showControls = false; // isUserActive || roomState === 'disconnected';
 
   return (
     <div className={clsx(classes.container, { showControls })}>
